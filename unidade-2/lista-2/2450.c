@@ -4,8 +4,9 @@ int main() {
     int N, M;
     int matriz[500][500];
     int i, j;
-    int anterior = -1;
-    int atual;
+    int colunaAnterior = -1;
+    int colunaAtual;
+    int encontrouLinhaZero = 0;
     int escada = 1;
 
     scanf("%d %d", &N, &M);
@@ -17,22 +18,25 @@ int main() {
     }
 
     for (i = 0; i < N; i++) {
-        atual = -1;
+        colunaAtual = -1;
 
         for (j = 0; j < M; j++) {
             if (matriz[i][j] != 0) {
-                atual = j;
+                colunaAtual = j;
                 break;
             }
         }
 
-        if (atual != -1) {
-            if (atual <= anterior) {
+        if (colunaAtual == -1) {
+            encontrouLinhaZero = 1;
+        } else {
+            if (encontrouLinhaZero ||
+                colunaAtual <= colunaAnterior) {
                 escada = 0;
                 break;
             }
 
-            anterior = atual;
+            colunaAnterior = colunaAtual;
         }
     }
 

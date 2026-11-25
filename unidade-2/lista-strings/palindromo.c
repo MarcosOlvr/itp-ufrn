@@ -10,7 +10,6 @@ void remover_quebra_de_linha(char s[]);
 int main(void)
 {
     char frase[202];
-
     if (fgets(frase, sizeof(frase), stdin) == NULL) {
         return 1;
     }
